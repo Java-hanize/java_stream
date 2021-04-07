@@ -30,6 +30,33 @@ public class StreamSample {
 		System.out.println("Map 결과 : " + cubedNumbers);
 		System.out.println("=================================================================");
 		
+		// FlatMap()
+		List<Integer> list1 = Arrays.asList(1,2,3);
+		List<Integer> list2 = Arrays.asList(4,5,6);
+		List<Integer> list3 = Arrays.asList(7,8,9);
+
+		List<List<Integer>> listOfNumbers = Arrays.asList(list1, list2, list3);
+
+		List<Integer> listOfAllIntegers = listOfNumbers.stream()
+		        .flatMap(x -> x.stream())
+		        .collect(Collectors.toList());
+		
+		System.out.println("=================================================================");
+		System.out.println("FlatMap 결과 : " + listOfAllIntegers);
+		System.out.println("=================================================================");
+		
+		// FlatMap() 2
+		String sentence1 = "This is a";
+		String sentence2 = "flatMap example";
+		List<String> result = Stream.of(sentence1, sentence2) //Stream<String>
+			.flatMap(sentence -> Stream.of(sentence.split(" "))) //Stream<String[]> => Stream<String>
+			.map(String::toUpperCase)
+			.collect(Collectors.toList());
+		
+		System.out.println("=================================================================");
+		System.out.println("FlatMap 결과2 : " + result);
+		System.out.println("=================================================================");
+				
 		// Filter()
 		List<Integer> numbers2 = Arrays.asList(1,2,3,4,5,6,7,8,9,10);
 
@@ -49,21 +76,6 @@ public class StreamSample {
 
 		System.out.println("=================================================================");
 		System.out.println("Sort 결과 : " + sortedList);
-		System.out.println("=================================================================");
-		
-		// FlatMap()
-		List<Integer> list1 = Arrays.asList(1,2,3);
-		List<Integer> list2 = Arrays.asList(4,5,6);
-		List<Integer> list3 = Arrays.asList(7,8,9);
-
-		List<List<Integer>> listOfNumbers = Arrays.asList(list1, list2, list3);
-
-		List<Integer> listOfAllIntegers = listOfNumbers.stream()
-		        .flatMap(x -> x.stream())
-		        .collect(Collectors.toList());
-
-		System.out.println("=================================================================");
-		System.out.println("FlatMap 결과 : " + listOfAllIntegers);
 		System.out.println("=================================================================");
 		
 		// Distinct()
