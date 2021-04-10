@@ -9,6 +9,8 @@ public class StreamSample {
 
 	public static void main(String[] args) {
 		
+		// Stream API 는 데이터베이스 시스템의 쿼리 메커니즘과 유사한 환경을 제공
+		
 		/* Stream 객체 만드는 기본 방법
 		List<Integer> numbers = Arrays.asList(1,2,3,4,5,6,7,8,9,10);
 		Stream<Integer> numberStream = numbers.stream();
@@ -90,6 +92,7 @@ public class StreamSample {
 		System.out.println("=================================================================");
 		
 		// Peek()
+		// 스트림을 디버깅하는 것이 목표. 디버깅외에는 프로덕션에 사용하기엔 적합하지 않음.
 		Stream.of(1,2,3,4,5,6,7,8,9,0)
 			.filter(x -> x%2 ==0)
 			.peek(e -> System.out.println("Peek 결과 : " + e))
@@ -155,7 +158,16 @@ public class StreamSample {
 		listOfCountries5.stream()
         	.filter(x-> x.toString().startsWith("I"))
         	.forEach(System.out::println);
-
+		
+		// reduce
+		List<Integer> integers = Arrays.asList(1, 2, 3, 4, 5);
+		Integer sum = integers.stream()
+				.reduce(0, Integer::sum); // 초기값 0
+				// .reduce(0, (a, b) -> a + b); // 위와 동일
+		
+		System.out.println("=================================================================");
+		System.out.println("reduce 결과 : " + sum);
+		System.out.println("=================================================================");
 	}
 
 }
