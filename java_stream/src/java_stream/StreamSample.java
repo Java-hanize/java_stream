@@ -168,6 +168,38 @@ public class StreamSample {
 		System.out.println("=================================================================");
 		System.out.println("reduce 결과 : " + sum);
 		System.out.println("=================================================================");
-	}
+		
+		// 스트림이 없는 코드
+		/*
+		List<Car> filteredCars = new ArrayList<>();
+		for(Car car : cars) {
+		    if("red".equals(car.getColor().toLowerCase())) {
+		        filteredCars.add(car);
+		    }
+		}
 
+		Collections.sort(filteredCars, new Comparator<Car>() {
+		    @Override
+		    public int compare(Car o1, Car o2) {
+		       return o1.getPrice().compareTo(o2.getPrice());
+		    }
+		});
+
+		List<String> carNames = new ArrayList<>();
+		for(Car car : filteredCars) {
+		    carNames.add(car.getName());
+		}
+		*/
+		
+		// 스트림이 있는 코드
+		/*
+		List<String> carNames = cars
+		        .stream()
+		        .filter(car -> "red".equals(car.getColor().toLowerCase()))
+		        .sorted(Comparator.comparing(Car::getPrice))
+		        .map(Car::getName)
+		        .collect(Collectors.toList());
+		*/
+	}
+	
 }
