@@ -1,6 +1,7 @@
 package java_stream;
 
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -57,6 +58,36 @@ public class StreamSample2 {
 		        .limit(2)
 		        .collect(Collectors.toList());
 		System.out.println(result);
+		
+		// Code: External iteration vs Internal Iteration
+		
+		List<String> words2 = Arrays.asList("Life", "is", "wonderful");
+
+		// External foreach iteration
+		System.out.print("External iteration (foreach): ");
+		
+		for(String word: words2) {
+		    System.out.print(word + " ");
+		}
+		
+		System.out.println();
+
+		// External iterator iteration
+		Iterator<String> iterator = words2.iterator();
+		System.out.print("External iteration (iterator) : ");
+
+		while(iterator.hasNext()) {
+		    System.out.print(iterator.next() + " ");
+		}
+		
+		System.out.println();
+
+		// Internal iteration
+		System.out.println("Internal iteration : ");
+		List<String> upperCase = words2.stream()
+				.map(String::toUpperCase)
+				.collect(Collectors.toList());
+		System.out.println(upperCase);
 	}
 	
 }
