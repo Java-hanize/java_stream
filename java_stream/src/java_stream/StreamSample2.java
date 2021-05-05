@@ -63,7 +63,7 @@ public class StreamSample2 {
 		
 		List<String> words2 = Arrays.asList("Life", "is", "wonderful");
 
-		// External foreach iteration   
+		// External foreach iteration     
 		System.out.print("External iteration (foreach): ");
 		
 		for(String word: words2) {
